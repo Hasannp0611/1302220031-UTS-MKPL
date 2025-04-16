@@ -9,9 +9,10 @@ public class Employee {
     private work work;
     private Family family;
 
-    public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
-        this.info = new Info(employeeId, firstName, lastName, idNumber, address, isForeigner, gender);
-        this.work = new work(yearJoined, monthJoined, dayJoined, this.info);
+    public Employee(EmpDetails details) {
+        this.info = new Info(details.getEmployeeId(), details.getFirstName(), details.getLastName(), 
+                             details.getIdNumber(), details.getAddress(), details.isForeigner(), details.isGender());
+        this.work = new work(details.getYearJoined(), details.getMonthJoined(), details.getDayJoined(), this.info);
         this.family = new Family();
     }
 
