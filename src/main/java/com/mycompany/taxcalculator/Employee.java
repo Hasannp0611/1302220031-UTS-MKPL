@@ -5,23 +5,20 @@
 package com.mycompany.taxcalculator;
 
 public class Employee {
-    private Info info;
-    private work work;
+    private EmpDetails details;
     private Family family;
 
-    public Employee(EmpDetails details) {
-        this.info = new Info(details.getEmployeeId(), details.getFirstName(), details.getLastName(), 
-                             details.getIdNumber(), details.getAddress(), details.isForeigner(), details.isGender());
-        this.work = new work(details.getYearJoined(), details.getMonthJoined(), details.getDayJoined(), this.info);
-        this.family = new Family();
+    public Employee(EmpDetails details, Family family) {
+        this.details = details;
+        this.family = family;
     }
 
     public Info getInfo() {
-        return info;
+        return details.getInfo();
     }
 
     public work getWork() {
-        return work;
+        return details.getWork();
     }
 
     public Family getFamily() {
@@ -29,6 +26,6 @@ public class Employee {
     }
 
     public int getAnnualIncomeTax() {
-        return work.getAnnualTax(family.getChildCount(), family.hasSpouse());
+        return getWork().getAnnualTax(family.getChildCount(), family.hasSpouse());
     }
 }

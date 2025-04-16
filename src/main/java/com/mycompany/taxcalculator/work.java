@@ -54,6 +54,7 @@ public class work {
             monthWorkingInYear = 12;
         }
 
-        return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, !hasSpouse, childCount);
+        TaxEmp taxEmp = new TaxEmp(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, hasSpouse, childCount);
+        return taxEmp.calculateTax();
     }
 }
